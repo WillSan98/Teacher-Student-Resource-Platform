@@ -27,9 +27,61 @@
           <a href="index.html" style="margin-left: 20px;"><img style="width: 40px; height: auto;" src="Icons/profile icon.png" alt="p icon"></a>
       </header>
     <body style ="background-color: grey;">
-        <main>
-
+        <main style="display: flex; flex-direction: row;">
+            <div id="side-panel" style="display: flex; flex-direction: column; width: 150px">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Class Listing
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <ul>
+                            <li><a href="#">Class 1</a></li>
+                            <li><a href="#">Class 2</a></li>
+                            <li><a href="#">Class 3</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Club Listing
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <ul>
+                              <li><a href="#">Misc. Club</a></li>
+                              <li><a href="#">Gaming Club</a></li>
+                              <li><a href="#">Fencing United</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                    </div>  
+                </div> 
+            </div>
+            </div>
+            <div id="feed" style="display: flex; flex-direction: column; margin-top: 75px;">
+                <p style="height: 100px; width: 800px; margin-left: 150px; background-color: white; border-radius: 5px;">
+                    filllllllllllllllller
+                </p>
+                <p style="height: 100px; width: 800px; margin-top: 20px; margin-left: 150px; background-color: white; border-radius: 5px;">
+                    filllllllllllllllller
+                </p>
+                <p style="height: 100px; width: 800px; margin-top: 20px; margin-left: 150px; background-color: white; border-radius: 5px;">
+                    filllllllllllllllller
+                </p>
+                <p style="height: 100px; width: 800px; margin-top: 20px; margin-left: 150px; background-color: white; border-radius: 5px;">
+                    filllllllllllllllller
+                </p>
+            </div>
         </main>   
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
+    <footer style="display: flex; justify-content: center;">
+        <p>Copyright &copy; 2023 TSRP. All rights reserved.</p>
+    </footer>
 </html>
