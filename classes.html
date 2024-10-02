@@ -36,11 +36,45 @@
             </ul>
           </div>
       </header>
-    <body style="background-color: grey;">
+    <body style="background-color: grey; display: flex; flex-direction: column; justify-content: center;">
         <main>
-            <button>Add Class</button>
-            <div class="container">
-                
+          <p>
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Add Class
+            </a>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Department Name</span>
+              <input type="text" class="form-control" placeholder="Ex: CSC | BIO" aria-label=">Department Name" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Class ID</span>
+              <input type="text" class="form-control" placeholder="Ex: CSC-362 -> 362 " aria-label="Class ID" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Section #</span>
+              <input type="text" class="form-control" placeholder="01, 02, etc.." aria-label="Section #" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+              <span class="input-group-text">Description</span>
+              <textarea class="form-control" aria-label="Description"></textarea>
+            </div>
+            <button type="button" class="btn btn-primary">Submit</button>
+          </div>
+            <div class="container" style="background-color: aliceblue; border-radius: 5px;">
+                <h1 style="">Classes:</h1>
+                <u1 style="display: flex; align-content: center; flex-direction: column;">
+                  <li>
+                    <p>class 1</p>
+                  </li>
+                  <li>
+                    <p>class 2</p>
+                  </li>
+                  <li>
+                    <p>class 3</p>
+                  </li>
+                </u1>
             </div>
         </main>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
