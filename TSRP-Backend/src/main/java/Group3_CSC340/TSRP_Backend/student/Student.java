@@ -1,7 +1,7 @@
 package Group3_CSC340.TSRP_Backend.student;
 
 import jakarta.persistence.*;
-import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Entity
 @Table(name ="students")
@@ -9,6 +9,8 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @Column(nullable = false)
     private int s_id;
 
     @Column(nullable = false)
@@ -23,8 +25,9 @@ public class Student {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+
     private String profileDescription;
+
 
     public Student(int s_id, String firstName, String lastName, String email, String password, String profileDescription) {
         this.s_id = s_id;
@@ -51,8 +54,8 @@ public class Student {
         return s_id;
     }
 
-    public void setS_id(int s_Id) {
-        this.s_id = s_Id;
+    public void setS_id(int s_id) {
+        this.s_id = s_id;
     }
 
     public String getFirstName() {
