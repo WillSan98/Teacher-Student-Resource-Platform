@@ -23,20 +23,23 @@ public class Student {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
     private String profileDescription;
 
-    public Student(int s_id, String firstName, String lastName, String email, String profileDescription) {
+    public Student(int s_id, String firstName, String lastName, String email, String password, String profileDescription) {
         this.s_id = s_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
         this.profileDescription = profileDescription;
     }
 
-    public Student(String firstName, String lastName, String email, String profileDescription) {
+    public Student(String firstName, String lastName, String email, String password, String profileDescription) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
         this.profileDescription = profileDescription;
     }
 

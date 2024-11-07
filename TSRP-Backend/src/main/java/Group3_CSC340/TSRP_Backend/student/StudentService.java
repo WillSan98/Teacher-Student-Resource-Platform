@@ -26,8 +26,12 @@ public class StudentService {
 
     public void updateStudent(int s_Id, Student student) {
         Student existing = getStudentById(s_Id);
-
-        studentRepository.save(existing);
+        studentRepository.save(student);
+        existing.setFirstName(student.getFirstName());
+        existing.setLastName(student.getLastName());
+        existing.setEmail(student.getEmail());
+        existing.setPassword(student.getPassword());
+        existing.setProfileDescription(student.getProfileDescription());
     }
 
     public void deleteStudentById(int s_Id) {

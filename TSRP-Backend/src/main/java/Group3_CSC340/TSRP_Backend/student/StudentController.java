@@ -25,12 +25,11 @@ public class StudentController {
     }
 
 
-
-        @PostMapping("/new")
+    @PostMapping("/new")
         public List<Student> addNewStudent(@RequestBody Student student) {
             service.addNewStudent(student);
             return service.getAllStudents();
-        }
+    }
 
     @PutMapping("/update/{s_id}")
     public Student updateStudent(@PathVariable int s_Id, @RequestBody Student student) {
