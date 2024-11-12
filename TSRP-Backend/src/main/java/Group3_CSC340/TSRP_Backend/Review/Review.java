@@ -1,6 +1,6 @@
 package Group3_CSC340.TSRP_Backend.Review;
 
-import CSC.example.student.Student;
+import Group3_CSC340.TSRP_Backend.student.Student;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 
