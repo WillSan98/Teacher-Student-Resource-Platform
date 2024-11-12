@@ -32,7 +32,7 @@ public class StudentController {
         return service.getAllStudents();
     }
 
-    @PostMapping("/update/{s_id}")
+    @PutMapping("/update/{s_id}")
     public Student updateStudent(@PathVariable int s_id, @RequestBody Student student) {
         service.updateStudent(s_id, student);
         return service.getStudentById(s_id);

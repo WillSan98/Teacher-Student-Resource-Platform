@@ -34,7 +34,7 @@ public class ClubController {
         return service.getAllClubs();
     }
 
-    @DeleteMapping("/delete/{class_id}")
+    @DeleteMapping("/delete/{club_id}")
     public List<Club> deleteClubById(@PathVariable int club_id) {
         service.deleteClubById(club_id);
         return service.getAllClubs();

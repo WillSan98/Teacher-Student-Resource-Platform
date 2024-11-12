@@ -29,11 +29,12 @@ public class TeacherController {
         service.addNewTeacher(teacher);
         return service.getAllTeachers();
     }
-    @PostMapping("/update/{t_id}")
-    public List<Teacher> updateTeacher(@PathVariable int t_id, @RequestBody Teacher teacher){
+
+    @PutMapping("/update/{t_id}")
+    public Teacher updateTeacher(@PathVariable int t_id, @RequestBody Teacher teacher){
 
         service.updateTeacherById(t_id, teacher);
-        return service.getAllTeachers();
+        return service.getTeacherById(t_id);
     }
 
     @DeleteMapping("/delete/{t_id}")
