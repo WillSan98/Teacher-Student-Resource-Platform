@@ -2,6 +2,8 @@ package Group3_CSC340.TSRP_Backend.Class;
 
 import jakarta.persistence.*;
 
+@Entity
+@Table(name = "classes")
 public class Class {
 
     @Id
@@ -33,7 +35,7 @@ public class Class {
         this.name = name;
     }
 
-    public Class(){
+    public Class() {
 
     }
 
