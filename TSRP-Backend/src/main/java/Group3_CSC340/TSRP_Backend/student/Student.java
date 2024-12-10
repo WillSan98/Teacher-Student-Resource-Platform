@@ -9,9 +9,9 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
-    @Column(nullable = false)
     private int s_id;
+
+
 
     @Column(nullable = false)
     private String firstName;
@@ -25,30 +25,43 @@ public class Student {
     @Column(nullable = false)
     private String password;
 
+    private String major;
 
     private String profileDescription;
 
 
-    public Student(int s_id, String firstName, String lastName, String email, String password, String profileDescription) {
+    private int graduationYear;
+
+
+
+    public Student() {
+
+    }
+
+    public Student(int s_id, String firstName, String lastName, String email, String password, String profileDescription, String major, int graduationYear) {
         this.s_id = s_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.profileDescription = profileDescription;
+        this.major = major;
+        this.graduationYear = graduationYear;
+
     }
 
-    public Student(String firstName, String lastName, String email, String password, String profileDescription) {
+    public Student(String firstName, String lastName, String email, String password, String profileDescription, String major, int graduationYear) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.profileDescription = profileDescription;
+        this.major = major;
+        this.graduationYear = graduationYear;
+
     }
 
-    public Student() {
 
-    }
 
     public int getS_id() {
         return s_id;
@@ -94,7 +107,39 @@ public class Student {
         return profileDescription;
     }
 
-    public void setProfileDescription(String profileDescription) {
-        this.profileDescription = profileDescription;
+    public void setProfileDescription(String profileDescription) {this.profileDescription = profileDescription;}
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
+
+    public int getGraduationYear() {
+        return graduationYear;
+    }
+
+    public void setGraduationYear(int graduationYear) {
+        this.graduationYear = graduationYear;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "s_Id=" + s_id +
+                ", firstname='" + firstName + '\'' +
+                ", lastname='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", profileDescription='" + profileDescription + '\'' +
+                ", major='" + major + '\'' +
+                ", password='" + password + '\'' +
+                ", graduationYear='" + graduationYear + '\'' +
+                '}';
     }
 }
+
