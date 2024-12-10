@@ -1,58 +1,7 @@
+
 package Group3_CSC340.TSRP_Backend.Review;
 
-import Group3_CSC340.TSRP_Backend.student.Stu
-package Group3_CSC340.TSRP_Backend.Posts;
-
 import Group3_CSC340.TSRP_Backend.student.Student;
-import jakarta.annotation.Nonnull;
-import jakarta.persistence.*;
-
-import java.sql.Date;
-
-@Entity
-@Table(name = "posts")
-public class Posts {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int postId;
-
-    private String postText;
-
-    public Posts(int postId, String postText) {
-        this.postId = postId;
-
-        this.postText = postText;
-    }
-
-    public Posts(String postText) {
-
-        this.postText = postText;
-    }
-
-    public Posts() {
-
-    }
-
-    public int getPostId() {
-        return postId;
-    }
-
-    public void setPostId(int postId) {
-        this.postId = postId;
-    }
-
-
-
-    public String getPostText() {
-        return postText;
-    }
-
-    public void setPostText(String postText) {
-        this.postText = postText;
-    }
-}
-dent;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 
@@ -67,54 +16,36 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int review_id;
 
-
-    @ManyToOne
-    @JoinColumn(name = "s_id")
-    private Student student;
-
     private String  reviewText;
 
-    @Column(nullable = false)
-    private Date reviewDate;
 
-
-
-
-
-
-    public Review(int r_id, Student student, String reviewText, @Nonnull Date reviewDate) {
+    public Review(int review_id, String reviewText) {
         this.review_id = review_id;
-        this.student = student;
+
         this.reviewText = reviewText;
-        this.reviewDate = reviewDate;
+
 
     }
 
-    public Review(Student student, String reviewText, @Nonnull Date reviewDate) {
-        this.student = student;
+    public Review(String reviewText) {
+
         this.reviewText = reviewText;
-        this.reviewDate = reviewDate;
+
     }
 
     public Review() {
 
     }
 
-    public int getR_id() {
+    public int getReview_id() {
         return review_id;
     }
 
-    public void setR_id(int r_id) {
+    public void setReview_id(int review_id) {
         this.review_id = review_id;
     }
 
-    public Student getStudent() {
-        return student;
-    }
 
-    public void setStudent(Student student) {
-        this.student = student;
-    }
 
     public String getReviewText() {
         return reviewText;
@@ -124,12 +55,5 @@ public class Review {
         this.reviewText = reviewText;
     }
 
-    @Nonnull
-    public Date getReviewDate() {
-        return reviewDate;
-    }
 
-    public void setReviewDate(@Nonnull Date reviewDate) {
-        this.reviewDate = reviewDate;
-    }
 }
