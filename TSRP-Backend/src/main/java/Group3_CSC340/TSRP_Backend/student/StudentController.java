@@ -1,47 +1,63 @@
 package Group3_CSC340.TSRP_Backend.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/students")
 public class StudentController {
 
     @Autowired
-    private StudentService service;
+    private StudentService Studentservice;
 
 
 
-    @GetMapping("/all")
-    public List<Student> getAllStudents() {
-        return service.getAllStudents();
+
+    @GetMapping("/feed")
+    public String getAllStudents(Model model) {
+        model.addAttribute( "studentList",Studentservice.getAllStudents());
+        return "posts-list";
     }
 
     @GetMapping("/{s_id}")
-    public Student getOneStudent(@PathVariable int s_id) {
-        return service.getStudentById(s_id);
+    public String getOneStudent(@PathVariable int s_id, Model model) {
+       model.addAttribute("student",  Studentservice.getStudentById(s_id));
+       return "s_profile";
     }
 
+    @GetMapping("/posts")
+    public String showHomeFeed() {return "redirect:/posts/all";}
+
+    @GetMapping("/createForm")
+    public String showCreateForm() {return "s_signup";}
 
     @PostMapping("/new")
-    public List<Student> addNewStudent(@RequestBody Student student) {
-        service.addNewStudent(student);
-        return service.getAllStudents();
+    public String addNewStudent(Student student) {
+        Studentservice.saveStudent(student);
+        return "redirect:/students/" + student.getS_id();
     }
 
-    @PutMapping("/update/{s_id}")
-    public Student updateStudent(@PathVariable int s_id, @RequestBody Student student) {
-        service.updateStudent(s_id, student);
-        return service.getStudentById(s_id);
+    @GetMapping("/update/{s_id}")
+    public String showUpdateForm(@PathVariable int s_id, Model model) {
+        model.addAttribute("student", Studentservice.getStudentById(s_id));
+        return "s_profile-update";
     }
 
-    @DeleteMapping("/delete/{s_id}")
-    public void deleteStudentById(@PathVariable int s_id) {
-        service.deleteStudentById(s_id);
+    @PostMapping("/update")
+    public String updateStudent(Student student) {
+        Studentservice.saveStudent(student);
+        return "redirect:/students/" + student.getS_id();
+    }
 
+    @GetMapping("/delete/{s_id}")
+    public String deleteStudentById(@PathVariable int s_id) {
+        Studentservice.deleteStudentById(s_id);
+        return "redirect:s_signup";
     }
 
 
