@@ -1,3 +1,4 @@
+
 package Group3_CSC340.TSRP_Backend.Review;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,10 @@ public class ReviewService {
     public void addNewReview(Review review) {
         reviewRepository.save(review);
 
+    }
+
+    public void saveReview(Review review){
+        reviewRepository.save(review);
     }
 
     public void deleteReviewById(int review_id) {
