@@ -1,31 +1,48 @@
 package Group3_CSC340.TSRP_Backend.Review;
 
+import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/reviews")
 public class ReviewController {
 
     @Autowired
-    private ReviewService service;
+    private ReviewService Reviewservice;
 
     @GetMapping("/all")
-    public List<Review> getAllReviews() {
-        return service.getAllReviews();
+    public String getAllReviews(Model model) {
+        model.addAttribute( "reviewList", Reviewservice.getAllReviews());
+        return "review-list";
+    }
+
+    @GetMapping("/{review_Id}")
+    public String getOneReview(@PathVariable int review_Id, Model model) {
+        model.addAttribute("review", Reviewservice.getReviewById(review_Id));
+        return "t_profile";
+    }
+
+    @GetMapping("/createForm")
+    public String showCreateForm(){
+
+        return "review-new";
     }
 
     @PostMapping("/new")
-    public List<Review> addNewReview(@RequestBody Review review) {
-        service.addNewReview(review);
-        return service.getAllReviews();
+    public String addNewReview(Review review) {
+        Reviewservice.saveReview(review);
+        return "redirect:/reviews/all";
     }
 
-    @DeleteMapping("delete/{review_id}")
-    public List<Review> deleteReviewById(@PathVariable int review_id) {
-        service.deleteReviewById(review_id);
-        return service.getAllReviews();
+
+    @GetMapping("delete/{review_id}")
+    public String deleteReviewById(@PathVariable int review_id) {
+        Reviewservice.deleteReviewById(review_id);
+        return "redirect:/reviews/all";
     }
 }
