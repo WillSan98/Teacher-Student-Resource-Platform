@@ -11,29 +11,36 @@ public class AdminService {
     @Autowired
     private AdminRepository adminRepository;
 
-    public List<User> getAllUsers() {
-        return adminRepository.findAll();
+    public List<User> getActiveUsers() {
+        return adminRepository.findByBanStatusFalse();
+    }
+
+    public List<User> getBannedUsers() {
+        return adminRepository.findByBanStatusTrue();
+    }
+
+    public void banUser(int userId) {
+        User user = adminRepository.findById(userId).orElse(null);
+        if (user != null) {
+            user.setBanStatus(true);
+            adminRepository.save(user);
+        }
+    }
+
+    public void unBanUser(int userId) {
+        User user = adminRepository.findById(userId).orElse(null);
+        if (user != null) {
+            user.setBanStatus(false);
+            adminRepository.save(user);
+        }
     }
 
     public User getUserById(int userId) {
         return adminRepository.findById(userId).orElse(null);
     }
 
-    public void addNewUser(User user) {
+    public void saveUser(User user){
         adminRepository.save(user);
-    }
-
-    public void updateUser(int userId, User user) {
-        User existing = getUserById(userId);
-        existing.setFirstName(user.getFirstName());
-        existing.setLastName(user.getLastName());
-        existing.setUserType(user.getUserType());
-        existing.setAccountStatus(user.getAccountStatus());
-        existing.setEmail(user.getEmail());
-        existing.setPassword(user.getPassword());
-        existing.setDescription(user.getDescription());
-
-        adminRepository.save(existing);
     }
 
     public void deleteUserById(int userId) {

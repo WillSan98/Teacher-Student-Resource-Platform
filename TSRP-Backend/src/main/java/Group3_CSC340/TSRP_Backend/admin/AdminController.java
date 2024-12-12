@@ -1,43 +1,74 @@
 package Group3_CSC340.TSRP_Backend.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
-
-@RestController
+@Controller
 @RequestMapping("/user")
 public class AdminController {
 
     @Autowired
     private AdminService service;
 
+    @GetMapping("/login")
+    public String showLogin(){
+        return "login";
+    }
+
+    @GetMapping("/main")
+    public String showAdminMain(){
+        return "admin";
+    }
+
     @GetMapping("/all")
-    public List<User> getAllUsers() {
-        return service.getAllUsers();
+    public String getAllUsers(Model model) {
+        model.addAttribute("userList", service.getActiveUsers());
+        model.addAttribute("banList", service.getBannedUsers());
+        return "a_users";
     }
 
-    @GetMapping("/{userId}")
-    public User getOneUser(@PathVariable int userId) {
-        return service.getUserById(userId);
+    @GetMapping("/createUser")
+    public String showCreateUser(){
+        return "u_create";
     }
-
     @PostMapping("/new")
-    public List<User> addNewUser(@RequestBody User user) {
-        service.addNewUser(user);
-        return service.getAllUsers();
+    public String addNewUser(User user) {
+        service.saveUser(user);
+        return "redirect:/user/all";
     }
 
-    @PutMapping("/update/{userId}")
-    public User updateUser(@PathVariable int userId, @RequestBody User user) {
-        service.updateUser(userId, user);
-        return service.getUserById(userId);
+    @GetMapping("/update/{userId}")
+    public String showUpdateUser(@PathVariable int userId, Model model){
+        model.addAttribute("user", service.getUserById(userId));
+        return "u_update";
+    }
+    @PostMapping("/update")
+    public String updateUser(User user) {
+        service.saveUser(user);
+        return "redirect:/user/all";
     }
 
-    @DeleteMapping("/delete/{userId}")
-    public List<User> deleteUserById(@PathVariable int userId) {
+    @GetMapping("/banUser/{userId}")
+    public String banUser(@PathVariable int userId) {
+        service.banUser(userId);
+        return "redirect:/user/all";
+    }
+
+    @GetMapping("/unBanUser/{userId}")
+    public String unBanUser(@PathVariable int userId) {
+        service.unBanUser(userId);
+        return "redirect:/user/all";
+    }
+
+    @GetMapping("/delete/{userId}")
+    public String deleteUserById(@PathVariable int userId) {
         service.deleteUserById(userId);
-        return service.getAllUsers();
+        return "redirect:/user/all";
     }
+
 }
