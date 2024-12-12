@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.util.List;
+import Group3_CSC340.TSRP_Backend.Class.ClassService;
+import Group3_CSC340.TSRP_Backend.Club.ClubService;
 
 @Controller
 @RequestMapping("/user")
@@ -15,14 +15,56 @@ public class AdminController {
     @Autowired
     private AdminService service;
 
-    @GetMapping("/login")
+    @Autowired
+    private ClassService cService;
+
+    @Autowired
+    private ClubService clubService;
+
+    @GetMapping("/start")
     public String showLogin(){
         return "login";
     }
 
-    @GetMapping("/main")
+    @PostMapping("/login")
+    public String login(@RequestParam("email") String email, 
+                        @RequestParam("password") String password, 
+                        Model model) {
+        User user = service.loginUser(email, password);
+
+        if (user != null) {
+            model.addAttribute("user", user);
+            switch (user.getUserType()) {
+                case "Student":
+                    return "redirect:/student/" + user.getUserId();
+                case "Teacher":
+                    return "redirect:/teacher/" + user.getUserId();
+                case "Admin":
+                    return "redirect:/user/" + user.getUserId();
+                default:
+                    return "error";
+            }
+        } else {
+            model.addAttribute("error", "Invalid email or password");
+            return "redirect:/user/start";
+        }
+    }    
+
+    @GetMapping("/{userId}")
     public String showAdminMain(){
         return "admin";
+    }
+
+    @GetMapping("/classes")
+    public String showAdminClass(Model model){
+        model.addAttribute("classList", cService.getAllClasses());
+        return "a_classes";
+    }
+
+    @GetMapping("/clubs")
+    public String showAdminClubs(Model model){
+        model.addAttribute("classList", clubService.getAllClubs());
+        return "a_clubs";
     }
 
     @GetMapping("/all")

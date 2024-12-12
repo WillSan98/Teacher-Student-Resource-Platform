@@ -11,6 +11,10 @@ public class AdminService {
     @Autowired
     private AdminRepository adminRepository;
 
+    public User loginUser(String email, String password) {
+        return adminRepository.findByEmailAndPassword(email, password);
+    }
+
     public List<User> getActiveUsers() {
         return adminRepository.findByBanStatusFalse();
     }
