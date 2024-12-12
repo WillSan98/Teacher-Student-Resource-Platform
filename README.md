@@ -26,7 +26,7 @@ Make sure you have xampp installed and working properly: file name for the datab
 
 # Cases
 
-For (Customer) Student cases:
+For (Customer) Student cases (Jason Isler): 
 1. Sign up for account
 - From the starting page click on the "create student account" link
 - Enter first and last name, email, password, then hit create account.
@@ -45,4 +45,9 @@ For (Customer) Student cases:
 4. Create a new review for a teacher page
 - find the teacher you want to review
 - similar to posts, click on new button to create a new review
-- type the review out and hit submit, the review should appear below the teacher profile page. 
+- type the review out and hit submit, the review should appear below the teacher profile page.
+
+5. Join a class or club with a student account
+- Search for class or club
+- click join button
+- your account will then be able to see any posts from that group
