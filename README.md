@@ -42,7 +42,7 @@ For (Customer) Student cases:
 - create a new post by click on the new post button
 - type what you on the post and hit post, the new post should be there.
 
-  4. Create a new review for a teacher page
-  - find the teacher you want to review
-  - similar to posts, click on new button to create a new review
-  - type the review out and hit submit, the review should appear below the teacher profile page. 
+4. Create a new review for a teacher page
+- find the teacher you want to review
+- similar to posts, click on new button to create a new review
+- type the review out and hit submit, the review should appear below the teacher profile page. 
