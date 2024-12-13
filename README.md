@@ -51,3 +51,21 @@ For (Customer) Student cases (Jason Isler):
 - Search for class or club
 - click join button
 - your account will then be able to see any posts from that group
+
+For (Admin) Admin cases (Matthew Davis): 
+1. Login
+- From localhost8080/user/start you can enter the email and password for the admin account. (You will need to set it up in phpMyAdmin)
+2. Edit User List
+- Click on User List in the header
+- Click Create New User to create a user for the list
+- Click View on the user to check the user's info and change it
+- Click Ban on the user to send them to the ban list
+- Click Un-Ban on the now banned user to send them back to the user list
+- Click delete to delete the user
+3. Edit Request List
+- Click on Requests in the header
+- Click Create New Request to create a request for the list
+- Click Accept on the request to mover the request to the accepted requests list
+- Click Complete on the request to remove the request
+- Click Free on the request to send it back to the free requests list
+- Click delete to delete the request
