@@ -20,7 +20,7 @@ public class User {
     private String userType;
 
     @Column(nullable = false)
-    private String accountStatus;
+    private boolean banStatus = false;
 
     @Column(nullable = false)
     private String email;
@@ -30,22 +30,21 @@ public class User {
 
     private String description;
 
-    public User(int userId, String firstName, String lastName, String userType, String accountStatus, String email, String password, String description) {
+    public User(int userId, String firstName, String lastName, String userType, boolean banStatus, String email, String password, String description) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userType = userType;
-        this.accountStatus = accountStatus;
+        this.banStatus = banStatus;
         this.email = email;
         this.password = password;
         this.description = description;
     }
 
-    public User(String firstName, String lastName, String userType, String accountStatus, String email, String password, String description) {
+    public User(String firstName, String lastName, String userType, String email, String password, String description) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userType = userType;
-        this.accountStatus = accountStatus;
         this.email = email;
         this.password = password;
         this.description = description;
@@ -86,12 +85,12 @@ public class User {
         this.userType = userType;
     }
 
-    public String getAccountStatus() {
-        return accountStatus;
+    public boolean getBanStatus() {
+        return banStatus;
     }
 
-    public void setAccountStatus(String accountStatus) {
-        this.accountStatus = accountStatus;
+    public void setBanStatus(boolean banStatus) {
+        this.banStatus = banStatus;
     }
 
     public String getEmail() {

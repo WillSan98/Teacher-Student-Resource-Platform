@@ -1,4 +1,4 @@
-package Group3_CSC340.TSRP_Backend.admin;
+package Group3_CSC340.TSRP_Backend.request;
 
 import jakarta.persistence.*;
 
@@ -14,20 +14,19 @@ public class Request {
     private String sender;
 
     @Column(nullable = false)
-    private String r_Status;
+    private boolean requestStatus = false;
 
     private String description;
 
-    public Request(int r_Id, String sender, String r_Status, String description) {
+    public Request(int r_Id, String sender, boolean requestStatus, String description) {
         this.r_Id = r_Id;
         this.sender = sender;
-        this.r_Status = r_Status;
+        this.requestStatus = requestStatus;
         this.description = description;
     }
 
-    public Request(String sender, String r_Status, String description) {
+    public Request(String sender, String description) {
         this.sender = sender;
-        this.r_Status = r_Status;
         this.description = description;
     }
 
@@ -50,12 +49,12 @@ public class Request {
         this.sender = sender;
     }
 
-    public String getR_Status() {
-        return r_Status;
+    public boolean getRequestStatus() {
+        return requestStatus;
     }
 
-    public void setR_Status(String r_Status) {
-        this.r_Status = r_Status;
+    public void setRequestStatus(boolean requestStatus) {
+        this.requestStatus = requestStatus;
     }
 
     public String getDescription() {

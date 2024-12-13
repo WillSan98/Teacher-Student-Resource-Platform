@@ -8,4 +8,10 @@ import java.util.List;
 
 @Repository
 public interface AdminRepository extends JpaRepository<User, Integer>{
+    List<User> findByBanStatusFalse();
+
+    List<User> findByBanStatusTrue();
+
+    @Query("SELECT u FROM User u WHERE u.email = :email AND u.password = :password")
+    User findByEmailAndPassword(String email, String password);
 }
